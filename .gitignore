@@ -1,5 +1,6 @@
-_site/
-_posts/
-_layouts/
-_includes/
-_config.yml
+.gitignorel
+/_site/
+/_posts/
+/_layouts/
+/_includes/
+/_config.yml
