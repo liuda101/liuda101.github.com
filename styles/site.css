@@ -1,0 +1,18 @@
+html,body,header,footer,div,section,p,span,h1,h2{padding:0;margin:0;}
+
+html,body{background-color:#e1ede0;}
+
+.wrapper{width:800px;margin:0 auto;position:relative;}
+
+header{color:white;background-color:black;padding-top:10px;padding-bottom:10px;border-bottom:4px solid white;box-shadow:0px 1px 2px rgba(0,0,0,0.2);}
+header h1{font-size:35px;letter-spacing:20px;padding-bottom:10px;}
+header h2{font-size:18px;letter-spacing:10px;margin-left:120px;}
+header img{position:absolute;height:80px;width:80px;right:40px;top:30px;padding:4px;border:1px solid #aaa;background-color:#fff;border-radius:4px;box-shadow:1px 1px 2px rgba(0,0,0,0.2);}
+
+#content{padding:10px 0px;}
+
+footer{color:white;background-color:black;padding-top:10px;padding-bottom:10px;border-top:2px solid white;box-shadow:0px -1px 2px rgba(0,0,0,0.2);font-size:13px;}
+footer a{color:white;text-decoration:none;margin-right:20px;}
+footer a:hover{text-decoration:underline;}
+footer a:active{color:red;}
+footer span{padding-right:5px;color:#b2caa6;}

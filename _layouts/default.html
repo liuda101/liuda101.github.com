@@ -3,8 +3,15 @@
   <head>
     <meta charset="UTF-8">
     <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="styles/site.css" />
   </head>
   <body>
-    {{ content }}
+  	{% include header.textile %}
+  	<section id="content">
+  		<div class="wrapper">
+  			{{ content }}
+  		</div>
+  	</section>
+    {% include footer.textile %}
   </body>
 </html>

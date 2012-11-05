@@ -1,0 +1,7 @@
+<header>
+	<div class="wrapper">
+		<h1>每一天</h1>
+		<h2>阳光下总是笑脸，黑暗中依旧独行</h2>
+		<img src='images/photo.png' alt="Qifeng Liu" />
+	</div>
+</header>
