@@ -7,6 +7,7 @@ html,body{background-color:#e1ede0;}
 header{color:white;background-color:black;padding-top:10px;padding-bottom:10px;border-bottom:4px solid white;box-shadow:0px 1px 2px rgba(0,0,0,0.2);}
 header h1{font-size:35px;letter-spacing:20px;padding-bottom:10px;}
 header h2{font-size:18px;letter-spacing:10px;margin-left:120px;}
+header h2.p{margin-left:0px;}
 header img{position:absolute;height:80px;width:80px;right:40px;top:30px;padding:4px;border:1px solid rgba(0,0,0,0.2);background-color:#fff;border-radius:4px;box-shadow:1px 1px 2px rgba(0,0,0,0.2);}
 
 #content{padding:10px 0px;min-height:500px;}
@@ -16,5 +17,3 @@ footer a{color:white;text-decoration:none;margin-right:20px;}
 footer a:hover{text-decoration:underline;}
 footer a:active{color:red;}
 footer span{padding-right:5px;color:#b2caa6;}
-
-.p-h{font-size:18px;}
