@@ -8,7 +8,7 @@ header{color:white;background-color:black;padding-top:10px;padding-bottom:10px;b
 header h1{font-size:35px;letter-spacing:20px;padding-bottom:10px;}
 header h2{font-size:18px;letter-spacing:10px;margin-left:120px;}
 .p{margin-left:0px;}
-.p>span{font-size:80px;float:left;padding-right:10px;}
+.p>span{font-size:80px;float:left;margin-right:10px;letter-spacing:0px;text-shadow:5px 2px 6px rgba(0, 0, 0, 0.25);}
 header img{position:absolute;height:80px;width:80px;right:40px;top:30px;padding:4px;border:1px solid rgba(0,0,0,0.2);background-color:#fff;border-radius:4px;box-shadow:1px 1px 2px rgba(0,0,0,0.2);-webkit-mask-image:-webkit-gradient(linear, left bottom, left top, color-stop(0, rgba(255,255,255,0.79)), color-stop(1, rgba(255,255,255,0.98)));}
 
 #content{padding:10px 0px;min-height:500px;}
