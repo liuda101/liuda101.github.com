@@ -8,7 +8,10 @@
   <body>
   	<header>
   		<div class="wrapper">
-  			<h2 class="p">{{ page.title | first }}</h2>
+  			<h2 class="p">
+  				<span>{{ page.firstLetter }}</span>
+  				{{ page.title }}
+  			</h2>
   		</div>
   	</header>
   	<section id="content">
