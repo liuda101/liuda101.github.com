@@ -18,7 +18,7 @@ header img{position:absolute;height:80px;width:80px;right:40px;top:30px;padding:
 .p-f{margin-bottom:20px;border-top:1px solid #bbb;border-bottom:1px solid white;}
 .p-c ol{list-style-position:inside;margin-left:30px;}
 .p-c .b{font-weight:bold;}
-.p-c a{-webkit-transition:all 0.1s ease;}
+.p-c a{-webkit-transition:all 0.2s ease;}
 .p-c a:link, .p-c a:visited{color:blue;}
 .p-c a:hover{color:rgba(0,0,255,0.6);}
 .p-c a:active{color:red;}
