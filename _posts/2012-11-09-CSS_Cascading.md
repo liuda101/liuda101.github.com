@@ -42,12 +42,12 @@ firstLetter : 层
 <p>
 	有很多属性值是可以继承的，比如color等。继承值根本没有权重，这与“0”是有区别的！例如：
 </p>
-<p>
+<div class="d">
 	*{color:blue;}<br />
 	p{color:red;}<br />
 	<br />
-	<p>红色<span>红色</span></p>
-</p>
+	&lt;p&gt;红色&lt;span&gt;蓝色&lt;/span&gt;&lt;/p&gt;
+</div>
 <p>
 	在这里，span元素的颜色可以继承自p，应该为红色；但是通配符已经设置了蓝色。而虽然通配符对权重的贡献为0，但还是比根本没有权重的继承值要高的。
 </p>
@@ -58,6 +58,6 @@ firstLetter : 层
 		<li>作者样式即Author Style : !important</li>
 		<li>作者样式即Author Style，按照权重计算法来计算</li>
 		<li>用户样式即Reader Style</li>
-		<li>代理样式Agent Style</li>
+		<li>代理样式即Agent Style</li>
 	</ol>
 </p>
