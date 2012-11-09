@@ -18,6 +18,10 @@ header img{position:absolute;height:80px;width:80px;right:40px;top:30px;padding:
 .p-f{margin-bottom:20px;border-top:1px solid #bbb;border-bottom:1px solid white;}
 .p-c ol{list-style-position:inside;margin-left:30px;}
 .p-c .b{font-weight:bold;}
+.p-c a{-webkit-transition:all 0.1s ease;}
+.p-c a:link, .p-c a:visited{color:blue;}
+.p-c a:hover{color:rgba(0,255,0,0.6);}
+.p-c a:active{color:red;}
 
 footer{color:white;background-color:#2a3028;padding-top:10px;padding-bottom:10px;border-top:2px solid white;box-shadow:0px -1px 2px rgba(0,0,0,0.2);font-size:13px;}
 footer a{color:white;text-decoration:none;margin-right:20px;}
