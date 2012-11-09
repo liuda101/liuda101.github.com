@@ -14,7 +14,7 @@ firstLetter : 层
 	</ol>
 </p>
 <p>
-	<em>
+	<span class="b">
 	用户样式、代理样式、创造人员样式之间的叠加。
-	</em>
+	</span>
 </p>
