@@ -13,8 +13,8 @@ header img{position:absolute;height:80px;width:80px;right:40px;top:30px;padding:
 
 #content{padding:10px 0px;min-height:500px;}
 
-#content a{-webkit-transition:all 0.2s ease;}
-#content a:link, .p-c a:visited{color:blue;}
+#content a{-webkit-transition:all 0.2s ease;color:blue;}
+#content a:link, #content a:visited{color:blue;}
 #content a:hover{color:rgba(0,0,255,0.6);}
 #content a:active{color:red;}
 
