@@ -1,6 +1,0 @@
-<footer>
-	<div class="wrapper">
-		<span>微博</span><a href="http://www.weibo.com/zqiuqiu" target="_blank">http://www.weibo.com/zqiuqiu</a>
-		<span>邮箱</span><a href="mailto:liu.da101@gmail.com">liu.da101@gmail.com</a>
-	</div>
-</footer>
