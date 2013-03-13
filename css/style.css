@@ -2,7 +2,7 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 
 #iPhone { width: 368px; height: 716px; margin: 0 auto; position: relative; }
 
-#screen { width: 320px; height: 480px; position: absolute; left: 24px; top: 118px; }
+#screen { width: 320px; height: 480px; position: absolute; left: 24px; top: 118px; overflow: hidden; }
 
 #home { position: absolute; bottom: 29px; width: 100%; text-align: center; }
 #home button { border: none; height: 70px; width: 70px; background: url(../imgs/home.png) no-repeat 100px 100px; background-size: 70px; }
@@ -21,15 +21,23 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 #status-bar span.location { background-position: 2px -122px; width: 17px; }
 #status-bar span.alarm { background-position: 2px -97px; width: 17px; }
 
-#app-grids { height: 334px; padding-top: 10px; }
+#app-grids { display: -webkit-box; height: 344px; overflow: hidden; width: 200%; }
+#app-grids > div { width: 320px; height: 334px; padding-top: 10px; }
+#app-grids > div:first-child { -webkit-transition: background-color 0.3s ease; }
+#app-grids > div:first-child.show-search { background-color: rgba(0, 0, 0, 0.618); }
 
-#page-control { height: 36px; text-align: center; }
+#page-control { height: 36px; text-align: center; -webkit-transition: background-color 0.3s ease; }
+#page-control.show-search { background-color: rgba(0, 0, 0, 0.618); }
 #page-control span { display: inline-block; width: 10px; height: 36px; background: url(../imgs/icons.png) no-repeat 1px 12px; background-size: 50px; }
 #page-control span.active { background-position: 1px -13px; }
 
-#app-dock { height: 80px; background: url(../imgs/dock.png) no-repeat left bottom; background-size: 320px; }
+#app-dock { height: 80px; background: url(../imgs/dock.png) no-repeat left bottom; background-size: 320px; -webkit-transition: background-color 0.3s ease; }
+#app-dock.show-search { background-color: rgba(0, 0, 0, 0.618); }
 #app-dock .app { height: 80px; }
 #app-dock .app-icon { -webkit-box-reflect: below -2px -webkit-linear-gradient(transparent, transparent 50%, rgba(0, 0, 0, 0.3)); }
+
+#keyboard { height: 216px; background: url(../imgs/keyboard.png) no-repeat; background-size: 320px; position: absolute; top: 480px; left: 0px; width: 320px; -webkit-transition: top 0.35s ease; }
+#keyboard.show { top: 264px; }
 
 .app-column { padding: 0px 6px; display: -webkit-box; }
 .app-column .app { width: 77px; height: 86px; }
