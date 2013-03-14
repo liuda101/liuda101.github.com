@@ -1,0 +1,17 @@
+body{
+	background: -webkit-radial-gradient(#FFF, #CCC, #999);
+	padding-top:30px;
+}
+#iPhone{
+	background:url(../imgs/frame.png) no-repeat;
+	background-size:368px;
+}
+
+#screen{
+	background:url(../imgs/background.png) no-repeat;
+	background-size:320px;
+}
+
+#status-bar{
+	background-color:rgba(0,0,0,0.618);
+}

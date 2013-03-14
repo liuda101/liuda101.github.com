@@ -1,58 +1,100 @@
-(function(){
+$(function(){
 
 	var App = function(){
-		var self = this;
-
 		this.screenIndex = 0;
 		this.screenCount = 2;
 
-		this.searchGrid = ios.$('search-grid');
+		this.searchGrid = $('#search-grid');
 
-		this.pageControl = ios.$('page-control');
-		this.dock = ios.$('app-dock');
-		this.keyboard = ios.$('keyboard');
+		this.pageControl = $('#page-control');
+		this.dock = $('#app-dock');
+		this.keyboard = $('#keyboard');
 
 		this.scrollDirection = 0;
 
-		new iScroll('app-grids-scroll-wrapper',{
-			hScroll : true,
-			hScrollbar : false,
-			vScroll : false,
-			vScrollbar : false,
-			snap : true,
-			onScrollMove : function(e){
-				if(this.x > 5 - self.screenIndex * 320){
-					self.scrollDirection = -1;
-				} else if(this.x < -self.screenIndex * 320 - 5){
-					self.scrollDirection = 1;
-					if(self.screenIndex === 0){
-						ios.removeClass(self.keyboard,'show');
-					}
-				}
-			},
-			onBeforeScrollEnd : function(){
-				if(self.scrollDirection === -1 && self.screenIndex > 0){
-					self.screenIndex -= 1;
-				} else if(self.scrollDirection === 1 && self.screenIndex < self.screenCount - 1){
-					self.screenIndex += 1;
-				}
-				if(self.screenIndex === 0){
-					ios.addClass(self.keyboard,'show');
-					ios.addClass(self.searchGrid,'show-search');
-					ios.addClass(self.dock,'show-search');
-					ios.addClass(self.pageControl,'show-search');
-					this.options.bounce = false;
-				} else {
-					ios.removeClass(self.searchGrid,'show-search');
-					ios.removeClass(self.dock,'show-search');
-					ios.removeClass(self.pageControl,'show-search');
-					this.options.bounce = true;
-				}
-			}
-		});
+		this.scroller = null;
+
+		this.bindEvent();
 	};
 
-	window.addEventListener('load',function(){
+	App.prototype = {
+		bindEvent : function() {
+			var self = this;
+
+			this.scroller = new iScroll('app-grids-scroll-wrapper',{
+				hScroll : true,
+				hScrollbar : false,
+				vScroll : false,
+				vScrollbar : false,
+				snap : true,
+				onScrollMove : function(e){
+					if(this.x > 5 - self.screenIndex * 320){
+						self.scrollDirection = -1;
+					} else if(this.x < -self.screenIndex * 320 - 5){
+						self.scrollDirection = 1;
+						if(self.screenIndex === 0){
+							self.keyboard.removeClass('show');
+						}
+					}
+				},
+				onBeforeScrollEnd : function(){
+					if(self.scrollDirection === -1 && self.screenIndex > 0){
+						self.screenIndex -= 1;
+					} else if(self.scrollDirection === 1 && self.screenIndex < self.screenCount - 1){
+						self.screenIndex += 1;
+					}
+					if(self.screenIndex === 0){
+						self.keyboard.addClass('show');
+						self.searchGrid.addClass('show-search');
+						self.dock.addClass('show-search');
+						self.pageControl.addClass('show-search');
+						this.options.bounce = false;
+					} else {
+						self.searchGrid.removeClass('show-search');
+						self.dock.removeClass('show-search');
+						self.pageControl.removeClass('show-search');
+						this.options.bounce = true;
+					}
+				},
+				onScrollEnd : function(){
+					if(self.screenIndex === 0){
+						self.keyboard.addClass('show');
+						self.searchGrid.addClass('show-search');
+						self.dock.addClass('show-search');
+						self.pageControl.addClass('show-search');
+						this.options.bounce = false;
+					} else {
+						self.searchGrid.removeClass('show-search');
+						self.dock.removeClass('show-search');
+						self.pageControl.removeClass('show-search');
+						this.options.bounce = true;
+					}
+				}
+			});
+	
+			this.appMouseDownTimeout = null;
+
+			$('.app').on('mousedown',function(e){
+				window.clearTimeout(self.appMouseDownTimeout);
+				if(!$('.app').hasClass('rotating')){
+					self.appMouseDownTimeout = window.setTimeout(function(){
+						$('.app').each(function(){
+							$(this).addClass('rotating');
+							$(this).addClass('rotating' + Math.ceil(Math.random() * 10 % 4));
+						})
+					},600);
+				}
+			});
+
+			$('#home button').on('click',function(){
+				if($('.app').hasClass('rotating')){
+					$('.app').removeClass('rotating');
+				}
+			});
+		}
+	};
+
+	// window.addEventListener('load',function(){
 		new App();
-	},false);
-})();
+	// },false);
+});

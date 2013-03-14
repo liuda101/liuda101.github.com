@@ -1,0 +1,290 @@
+#w{
+	
+}
+
+#iPhone{
+	width:368px;
+	height:716px;
+	margin:0 auto;
+	position:relative;
+}
+
+#screen{
+	width:320px;
+	height:480px;
+	position:absolute;
+	left:24px;
+	top:118px;
+	overflow:hidden;
+}
+
+#home{
+	position:absolute;
+	bottom:29px;
+	width:100%;
+	text-align:center;
+	button{
+		border:none;
+		height:70px;
+		width:70px;
+		background:url(../imgs/home.png) no-repeat 100px 100px;
+		background-size:70px;
+		&:active{
+			background-position:0px 0px;
+		}
+	}
+}
+
+#time-status{
+	position:absolute;
+	top:0px;
+	left:0px;
+	right:0px;
+	text-align:center;
+}
+#status-bar{
+	height:20px;
+	position:relative;
+	span{
+		color:#cfcfcf;
+		font-size:10px;
+		height:20px;
+		line-height:20px;
+		display:inline-block;
+		&.left{
+			float:left;	
+		}
+		&.right{
+			float:right;
+		}
+		&.icon{
+			background:url(../imgs/icons.png) no-repeat;
+			background-size:50px;
+			width:25px;
+		}
+		&.intensity{
+			background-position:2px -197px;
+		}
+		&.battery{
+			background-position:2px -146px;	
+			width:27px;
+		}
+		&.orientation_lock{
+			background-position:2px -173px;	
+			width:23px;
+		}
+		&.location{
+			background-position:2px -122px;
+			width:17px;
+		}
+		&.alarm{
+			background-position:2px -97px;	
+			width:17px;
+		}
+	}
+}
+
+#app-grids{
+	display:-webkit-box;
+	height:344px;
+	overflow:hidden;
+	width:200%;
+	&>div{
+		width:320px;
+		height:334px;
+		padding-top:10px;
+		&:first-child{
+			-webkit-transition:background-color 0.3s ease;
+			&.show-search{
+				background-color:rgba(0,0,0,0.618);
+			}
+		}
+	}
+}
+
+#page-control{
+	height:36px;
+	text-align:center;
+	-webkit-transition:background-color 0.3s ease;
+	&.show-search{
+		background-color:rgba(0,0,0,0.618);
+	}
+	span{
+		display:inline-block;
+		width:10px;
+		height:36px;
+		background:url(../imgs/icons.png) no-repeat 1px 12px;
+		background-size:50px;
+		&.active{
+			background-position:1px -13px;
+		}
+	}
+}
+
+#app-dock{
+	height:80px;
+	background:url(../imgs/dock.png) no-repeat left bottom;
+	background-size:320px;
+	-webkit-transition:background-color 0.3s ease;
+	&.show-search{
+		background-color:rgba(0,0,0,0.618);
+	}
+	.app{
+		height:80px;
+	}
+	.app-icon{
+		-webkit-box-reflect: below -2px -webkit-linear-gradient(transparent,transparent 50%,rgba(0,0,0,.3));
+	}
+}
+
+#keyboard{
+	height:216px;
+	background:url(../imgs/keyboard.png) no-repeat;
+	background-size:320px;
+	position:absolute;
+	top:480px;
+	left:0px;
+	width:320px;
+	-webkit-transition:top 0.35s ease;
+	&.show{
+		top:264px;
+	}
+}
+
+
+@-webkit-keyframes appRotat1{
+	0% {
+		-webkit-transform:rotate(-2deg);
+	}
+	20% {
+		-webkit-transform:rotate(-1.5deg);
+	}
+	40% {
+		-webkit-transform:rotate(-1deg);
+	}
+	60% {
+		-webkit-transform:rotate(0deg);
+	}
+	80% {
+		-webkit-transform:rotate(1deg);
+	}
+	100% {
+		-webkit-transform:rotate(2deg);
+	}
+}
+
+@-webkit-keyframes appRotat2{
+	0% {
+		-webkit-transform:rotate(-2.5deg);
+	}
+	20% {
+		-webkit-transform:rotate(-1deg);
+	}
+	40% {
+		-webkit-transform:rotate(-0.3deg);
+	}
+	60% {
+		-webkit-transform:rotate(0deg);
+	}
+	80% {
+		-webkit-transform:rotate(1.2deg);
+	}
+	100% {
+		-webkit-transform:rotate(2.5deg);
+	}
+}
+@-webkit-keyframes appRotat3{
+	0% {
+		-webkit-transform:rotate(-2deg);
+	}
+	20% {
+		-webkit-transform:rotate(-1.5deg);
+	}
+	40% {
+		-webkit-transform:rotate(-0.3deg);
+	}
+	60% {
+		-webkit-transform:rotate(0.4deg);
+	}
+	80% {
+		-webkit-transform:rotate(1.8deg);
+	}
+	100% {
+		-webkit-transform:rotate(2.5deg);
+	}
+}
+@-webkit-keyframes appRotat4{
+	0% {
+		-webkit-transform:rotate(-1.5deg);
+	}
+	20% {
+		-webkit-transform:rotate(-1.1deg);
+	}
+	40% {
+		-webkit-transform:rotate(-0.3deg);
+	}
+	60% {
+		-webkit-transform:rotate(0.1deg);
+	}
+	80% {
+		-webkit-transform:rotate(1.1deg);
+	}
+	100% {
+		-webkit-transform:rotate(2.2deg);
+	}
+}
+
+.app-column{
+	padding:0px 6px;
+	display:-webkit-box;
+	.app{
+		width:77px;
+		height:86px;
+		&.rotating{
+			&.rotating1{
+				-webkit-animation:appRotat1 0.1s infinite;
+				-webkit-animation-delay:0.025s;
+				-webkit-animation-direction:alternate;
+			}
+			&.rotating2{
+				-webkit-animation:appRotat2 0.1s infinite;
+				-webkit-animation-delay:0.05s;
+				-webkit-animation-direction:alternate;
+			}
+			&.rotating3{
+				-webkit-animation:appRotat3 0.1s infinite;
+				-webkit-animation-delay:0.075s;
+				-webkit-animation-direction:alternate;
+			}
+			&.rotating4{
+				-webkit-animation:appRotat4 0.1s infinite;
+				-webkit-animation-delay:0.1s;
+				-webkit-animation-direction:alternate;
+			}
+		}
+	}
+	.app-icon{
+		width:57px;
+		height:57px;
+		margin:0 auto;
+		img{
+			width:57px;
+		}
+		&:active{
+			-webkit-mask-box-image: -webkit-linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7));
+		}
+	}
+	.app-title{
+		color:white;
+		text-align:center;
+		font-size:13px;
+		padding-top:3px;
+		text-shadow:-1px 2px 1px rgba(0,0,0,0.6);
+		
+		height:19px;
+		white-space:nowrap;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		word-wrap:break-word;
+	}
+}

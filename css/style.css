@@ -39,10 +39,43 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 #keyboard { height: 216px; background: url(../imgs/keyboard.png) no-repeat; background-size: 320px; position: absolute; top: 480px; left: 0px; width: 320px; -webkit-transition: top 0.35s ease; }
 #keyboard.show { top: 264px; }
 
+@-webkit-keyframes appRotat1 { 0% { -webkit-transform: rotate(-2deg); }
+  20% { -webkit-transform: rotate(-1.5deg); }
+  40% { -webkit-transform: rotate(-1deg); }
+  60% { -webkit-transform: rotate(0deg); }
+  80% { -webkit-transform: rotate(1deg); }
+  100% { -webkit-transform: rotate(2deg); } }
+
+@-webkit-keyframes appRotat2 { 0% { -webkit-transform: rotate(-2.5deg); }
+  20% { -webkit-transform: rotate(-1deg); }
+  40% { -webkit-transform: rotate(-0.3deg); }
+  60% { -webkit-transform: rotate(0deg); }
+  80% { -webkit-transform: rotate(1.2deg); }
+  100% { -webkit-transform: rotate(2.5deg); } }
+
+@-webkit-keyframes appRotat3 { 0% { -webkit-transform: rotate(-2deg); }
+  20% { -webkit-transform: rotate(-1.5deg); }
+  40% { -webkit-transform: rotate(-0.3deg); }
+  60% { -webkit-transform: rotate(0.4deg); }
+  80% { -webkit-transform: rotate(1.8deg); }
+  100% { -webkit-transform: rotate(2.5deg); } }
+
+@-webkit-keyframes appRotat4 { 0% { -webkit-transform: rotate(-1.5deg); }
+  20% { -webkit-transform: rotate(-1.1deg); }
+  40% { -webkit-transform: rotate(-0.3deg); }
+  60% { -webkit-transform: rotate(0.1deg); }
+  80% { -webkit-transform: rotate(1.1deg); }
+  100% { -webkit-transform: rotate(2.2deg); } }
+
 .app-column { padding: 0px 6px; display: -webkit-box; }
 .app-column .app { width: 77px; height: 86px; }
+.app-column .app.rotating.rotating1 { -webkit-animation: appRotat1 0.1s infinite; -webkit-animation-delay: 0.025s; -webkit-animation-direction: alternate; }
+.app-column .app.rotating.rotating2 { -webkit-animation: appRotat2 0.1s infinite; -webkit-animation-delay: 0.05s; -webkit-animation-direction: alternate; }
+.app-column .app.rotating.rotating3 { -webkit-animation: appRotat3 0.1s infinite; -webkit-animation-delay: 0.075s; -webkit-animation-direction: alternate; }
+.app-column .app.rotating.rotating4 { -webkit-animation: appRotat4 0.1s infinite; -webkit-animation-delay: 0.1s; -webkit-animation-direction: alternate; }
 .app-column .app-icon { width: 57px; height: 57px; margin: 0 auto; }
 .app-column .app-icon img { width: 57px; }
+.app-column .app-icon:active { -webkit-mask-box-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)); }
 .app-column .app-title { color: white; text-align: center; font-size: 13px; padding-top: 3px; text-shadow: -1px 2px 1px rgba(0, 0, 0, 0.6); height: 19px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; word-wrap: break-word; }
 
 body { background: -webkit-radial-gradient(white, #cccccc, #999999); padding-top: 30px; }
