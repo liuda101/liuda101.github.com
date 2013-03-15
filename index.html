@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="lock">
 	<head>
 		<meta charset="utf-8">
 		<title>iOS User Interface Simulation</title>
@@ -30,13 +30,30 @@
 						<span class="alarm icon right">
 						</span>
 					</div>
+					<div id="lock-screen">
+						<div id="lock-screen-time">
+							<div id="lock-screen-time-time">
+								21:30
+							</div>
+							<div id="lock-screen-time-date">
+								Thursday,October 31
+							</div>
+						</div>
+						<div id="lock-screen-slide">
+							<div id="lock-screen-slide-bg">
+								<div id="lock-screen-slide-btn">
+								</div>	
+							</div>
+							<div id="lock-screen-slide-tip" class="blind">
+								<strong>slide to unlock</strong>
+							</div>
+							<div id="lock-screen-camera-btn">
+							</div>
+						</div>
+					</div>
 					<div id="app-grids-scroll-wrapper">
 						<div id="app-grids">
-							<div class="app-grid show-search" id="search-grid">
-								<div>
-								</div>
-							</div>
-							<div class="app-grid">
+							<div class="app-grid active">
 								<div class="app-column">
 									<div class="app">
 										<div class="app-icon">
@@ -174,17 +191,19 @@
 									</div>
 								</div>
 							</div>
+							<div class="app-grid" id="search-grid">
+								<div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div id="page-control" class="show-search">
+					<div id="page-control">
 						<span>
 						</span>
 						<span class="active">
 						</span>
-						<span>
-						</span>
 					</div>
-					<div id="app-dock" class="show-search">
+					<div id="app-dock">
 						<div class="app-column">
 							<div class="app">
 								<div class="app-icon">
@@ -221,7 +240,7 @@
 						</div>
 					</div>
 				
-					<div id="keyboard" class="show">
+					<div id="keyboard">
 
 					</div>
 				</div>
@@ -231,12 +250,22 @@
 				</div>
 			</div>
 			<!-- end iPhone -->
-
 		</div>
 		<!-- end w -->
 
 		<script type="text/javascript" src="js/lib/iscroll.js"></script>
+		<script type="text/javascript" src="js/lib/underscore.js"></script>
 		<script type="text/javascript" src="js/lib/jquery.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
+		<script type="text/javascript" src="js/lib/jquery.ui.js"></script>
+		<script type="text/javascript" src="js/locked-screen.js"></script>
+		<script type="text/javascript" src="js/app2.js"></script>
+		<script>
+			$(function(){
+				new Application();
+			});
+		</script>
+		<audio preload="auto" id="unlock_sound_effect">
+		  <source src="sounds/iphone_unlock_screen.mp3" type="audio/mpeg">
+		</audio>
 	</body>
 </html>

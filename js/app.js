@@ -1,12 +1,17 @@
 $(function(){
 
 	var App = function(){
+		// 当前屏幕位置
 		this.screenIndex = 0;
+		// 屏数
 		this.screenCount = 2;
 
+		// 搜索页
 		this.searchGrid = $('#search-grid');
 
+		// 分页控件
 		this.pageControl = $('#page-control');
+		// Dock控件
 		this.dock = $('#app-dock');
 		this.keyboard = $('#keyboard');
 
@@ -85,6 +90,11 @@ $(function(){
 					},600);
 				}
 			});
+			$('.app').on('mouseup',function(){
+				if(!$('.app').hasClass('rotating')){
+					window.clearTimeout(self.appMouseDownTimeout);
+				}
+			});
 
 			$('#home button').on('click',function(){
 				if($('.app').hasClass('rotating')){
@@ -94,7 +104,6 @@ $(function(){
 		}
 	};
 
-	// window.addEventListener('load',function(){
-		new App();
-	// },false);
+	
+	new App();
 });

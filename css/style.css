@@ -8,9 +8,29 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 #home button { border: none; height: 70px; width: 70px; background: url(../imgs/home.png) no-repeat 100px 100px; background-size: 70px; }
 #home button:active { background-position: 0px 0px; }
 
+.lock #time-status { display: none; }
+.lock #lock-screen-time, .lock #lock-screen-slide { -webkit-transform: translate3d(0, 0, 0); opacity: 1; }
+.lock #app-dock { -webkit-transform: translate3d(0, 80px, 0); }
+.lock .app-grid.active .app-column:nth-child(1) .app:nth-child(1) { -webkit-transform: translate3d(-150px, -150px, 0); }
+.lock .app-grid.active .app-column:nth-child(1) .app:nth-child(2) { -webkit-transform: translate3d(0, -172px, 0); }
+.lock .app-grid.active .app-column:nth-child(1) .app:nth-child(3) { -webkit-transform: translate3d(0, -172px, 0); }
+.lock .app-grid.active .app-column:nth-child(1) .app:nth-child(4) { -webkit-transform: translate3d(150px, -150px, 0); }
+.lock .app-grid.active .app-column:nth-child(2) .app:nth-child(1) { -webkit-transform: translate3d(-160px, 0, 0); }
+.lock .app-grid.active .app-column:nth-child(2) .app:nth-child(2) { -webkit-transform: translate3d(-150px, -150px, 0); }
+.lock .app-grid.active .app-column:nth-child(2) .app:nth-child(3) { -webkit-transform: translate3d(150px, -150px, 0); }
+.lock .app-grid.active .app-column:nth-child(2) .app:nth-child(4) { -webkit-transform: translate3d(160px, 0, 0); }
+.lock .app-grid.active .app-column:nth-child(3) .app:nth-child(1) { -webkit-transform: translate3d(-160px, 0, 0); }
+.lock .app-grid.active .app-column:nth-child(3) .app:nth-child(2) { -webkit-transform: translate3d(-150px, 150px, 0); }
+.lock .app-grid.active .app-column:nth-child(3) .app:nth-child(3) { -webkit-transform: translate3d(150px, 150px, 0); }
+.lock .app-grid.active .app-column:nth-child(3) .app:nth-child(4) { -webkit-transform: translate3d(160px, 0, 0); }
+.lock .app-grid.active .app-column:nth-child(4) .app:nth-child(1) { -webkit-transform: translate3d(-150px, 150px, 0); }
+.lock .app-grid.active .app-column:nth-child(4) .app:nth-child(2) { -webkit-transform: translate3d(0px, 172px, 0); }
+.lock .app-grid.active .app-column:nth-child(4) .app:nth-child(3) { -webkit-transform: translate3d(0px, 172px, 0); }
+.lock .app-grid.active .app-column:nth-child(4) .app:nth-child(4) { -webkit-transform: translate3d(150px, 150px, 0); }
+
 #time-status { position: absolute; top: 0px; left: 0px; right: 0px; text-align: center; }
 
-#status-bar { height: 20px; position: relative; }
+#status-bar { height: 20px; position: absolute; top: 0px; left: 0px; right: 0px; z-index: 10; }
 #status-bar span { color: #cfcfcf; font-size: 10px; height: 20px; line-height: 20px; display: inline-block; }
 #status-bar span.left { float: left; }
 #status-bar span.right { float: right; }
@@ -21,17 +41,43 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 #status-bar span.location { background-position: 2px -122px; width: 17px; }
 #status-bar span.alarm { background-position: 2px -97px; width: 17px; }
 
-#app-grids { display: -webkit-box; height: 344px; overflow: hidden; width: 200%; }
+#lock-screen { position: absolute; top: 20px; left: 0px; right: 0px; height: 460px; z-index: 100; }
+
+#lock-screen-time { position: absolute; top: 0px; left: 0px; right: 0px; height: 96px; background: url(../imgs/lock-screen-time.png) repeat-x; background-size: 2px; color: white; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transform: translate3d(0, -116px, 0); opacity: 0.8; }
+
+#lock-screen-time-time { font-size: 55px; text-align: center; padding-top: 5px; text-shadow: 1px -1px 2px rgba(0, 0, 0, 0.7); }
+
+#lock-screen-time-date { font-size: 16px; text-align: center; margin-top: -3px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); }
+
+#lock-screen-slide { position: absolute; bottom: 0px; left: 0px; right: 0px; height: 96px; background: url(../imgs/lock-screen-slide.png) repeat-x; background-size: 2px; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transform: translate3d(0, 96px, 0); opacity: 0.8; }
+
+#lock-screen-slide-bg { width: 232px; height: 52px; background: url(../imgs/slide-bg.png) no-repeat; background-size: 232px; float: left; position: absolute; top: 21px; left: 20px; }
+
+#lock-screen-slide-btn { width: 68px; height: 52px; background: url(../imgs/slide-button.png) no-repeat 3px 3px; background-size: 62px; position: absolute; z-index: 10; }
+
+@-webkit-keyframes slidetounlock { 0% { background-position: -228px 0; }
+  100% { background-position: 90px 0; } }
+
+#lock-screen-slide-tip { position: absolute; top: 22px; left: 86px; bottom: 10px; line-height: 52px; background: -webkit-gradient(linear, left top, right top, color-stop(0, #4d4d4d), color-stop(0.3, #4d4d4d), color-stop(0.5, white), color-stop(0.7, #4d4d4d), color-stop(1, #4d4d4d)); background-position: 90px 0; -webkit-background-clip: text; -webkit-text-fill-color: transparent; width: 300px; -webkit-text-size-adjust: none; }
+#lock-screen-slide-tip strong { color: #505050; font-size: 20px; margin-left: 12px; }
+#lock-screen-slide-tip.blind { -webkit-animation: slidetounlock 2.5s infinite; }
+
+#lock-screen-camera-btn { width: 29px; height: 51px; background: url(../imgs/camera-btn.png) no-repeat; background-size: 29px; float: right; margin: 22px 20px 0px 0px; }
+
+#app-grids-scroll-wrapper { position: absolute; top: 20px; width: 320px; height: 344px; z-index: 10; }
+
+#app-grids { display: -webkit-box; height: 344px; width: 200%; }
 #app-grids > div { width: 320px; height: 334px; padding-top: 10px; }
 #app-grids > div:first-child { -webkit-transition: background-color 0.3s ease; }
 #app-grids > div:first-child.show-search { background-color: rgba(0, 0, 0, 0.618); }
 
-#page-control { height: 36px; text-align: center; -webkit-transition: background-color 0.3s ease; }
+#page-control { height: 36px; text-align: center; position: absolute; bottom: 80px; left: 0px; right: 0px; -webkit-transition: background-color 0.3s ease; }
 #page-control.show-search { background-color: rgba(0, 0, 0, 0.618); }
 #page-control span { display: inline-block; width: 10px; height: 36px; background: url(../imgs/icons.png) no-repeat 1px 12px; background-size: 50px; }
 #page-control span.active { background-position: 1px -13px; }
+#page-control span:first-child { background-position: 1px -38px; }
 
-#app-dock { height: 80px; background: url(../imgs/dock.png) no-repeat left bottom; background-size: 320px; -webkit-transition: background-color 0.3s ease; }
+#app-dock { position: absolute; left: 0px; right: 0px; bottom: 0px; height: 80px; background: url(../imgs/dock.png) no-repeat left bottom; background-size: 320px; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transition-delay: 0.35s; -webkit-transform: translate3d(0, 0, 0); }
 #app-dock.show-search { background-color: rgba(0, 0, 0, 0.618); }
 #app-dock .app { height: 80px; }
 #app-dock .app-icon { -webkit-box-reflect: below -2px -webkit-linear-gradient(transparent, transparent 50%, rgba(0, 0, 0, 0.3)); }
@@ -68,7 +114,7 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
   100% { -webkit-transform: rotate(2.2deg); } }
 
 .app-column { padding: 0px 6px; display: -webkit-box; }
-.app-column .app { width: 77px; height: 86px; }
+.app-column .app { width: 77px; height: 86px; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transition-delay: 0.35s; }
 .app-column .app.rotating.rotating1 { -webkit-animation: appRotat1 0.1s infinite; -webkit-animation-delay: 0.025s; -webkit-animation-direction: alternate; }
 .app-column .app.rotating.rotating2 { -webkit-animation: appRotat2 0.1s infinite; -webkit-animation-delay: 0.05s; -webkit-animation-direction: alternate; }
 .app-column .app.rotating.rotating3 { -webkit-animation: appRotat3 0.1s infinite; -webkit-animation-delay: 0.075s; -webkit-animation-direction: alternate; }
@@ -83,5 +129,7 @@ body { background: -webkit-radial-gradient(white, #cccccc, #999999); padding-top
 #iPhone { background: url(../imgs/frame.png) no-repeat; background-size: 368px; }
 
 #screen { background: url(../imgs/background.png) no-repeat; background-size: 320px; }
+
+#lock-screen { background: url(../imgs/background.png) no-repeat; background-size: 320px; background-position: 0px -20px; }
 
 #status-bar { background-color: rgba(0, 0, 0, 0.618); }
