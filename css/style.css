@@ -43,13 +43,13 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 
 #lock-screen { position: absolute; top: 20px; left: 0px; right: 0px; height: 460px; z-index: 100; }
 
-#lock-screen-time { position: absolute; top: 0px; left: 0px; right: 0px; height: 96px; background: url(../imgs/lock-screen-time.png) repeat-x; background-size: 2px; color: white; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transform: translate3d(0, -116px, 0); opacity: 0.8; }
+#lock-screen-time { position: absolute; top: 0px; left: 0px; right: 0px; height: 96px; background: url(../imgs/lock-screen-time.png) repeat-x; background-size: 2px; color: white; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transform: translate3d(0, -136px, 0); opacity: 0.8; }
 
 #lock-screen-time-time { font-size: 55px; text-align: center; padding-top: 5px; text-shadow: 1px -1px 2px rgba(0, 0, 0, 0.7); }
 
 #lock-screen-time-date { font-size: 16px; text-align: center; margin-top: -3px; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); }
 
-#lock-screen-slide { position: absolute; bottom: 0px; left: 0px; right: 0px; height: 96px; background: url(../imgs/lock-screen-slide.png) repeat-x; background-size: 2px; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transform: translate3d(0, 96px, 0); opacity: 0.8; }
+#lock-screen-slide { position: absolute; bottom: 0px; left: 0px; right: 0px; height: 96px; background: url(../imgs/lock-screen-slide.png) repeat-x; background-size: 2px; -webkit-transition: -webkit-transform 0.35s ease; -webkit-transform: translate3d(0, 116px, 0); opacity: 0.8; }
 
 #lock-screen-slide-bg { width: 232px; height: 52px; background: url(../imgs/slide-bg.png) no-repeat; background-size: 232px; float: left; position: absolute; top: 21px; left: 20px; }
 
