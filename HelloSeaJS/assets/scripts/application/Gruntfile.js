@@ -3,7 +3,7 @@ module.exports = function(grunt){
 	grunt.initConfig({
 		transport : {
 			options : {
-				format : 'hello/dist/{{filename}}'
+				format : 'application/dist/{{filename}}'
 			},
 			application : {
 				files : {
