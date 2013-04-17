@@ -9,6 +9,25 @@
 	<h1 id="hello-seajs">
 		Hello SeaJS
 	</h1>
-	<script src="assets/scripts/seajs/sea.js" id="seajsnode" data-main="application/application.js"></script>
+
+
+
+	
+	<script src="assets/scripts/seajs/sea.js" id="seajsnode" data-main="application/application"></script>
+
+	<!-- 
+	Or
+	<script src="assets/scripts/seajs/sea.js" id="seajsnode"></script>
+	<script>
+		seajs.use("application/application");
+	</script>
+
+	-->
+
+	<!--
+	No use
+	<script src="assets/scripts/application/util.js"></script>
+	<script src="assets/scripts/application/application.js"></script>
+	-->
 </body>
 </html>
