@@ -1,0 +1,11 @@
+#loadingScreen{
+	z-index:10;
+	background:rgba(100,100,100,0.7);
+}
+
+#loadingMessage{
+	margin-top:400px; height:48px;
+	text-align:center;
+	color:white; font:12px;
+	background:url(../images/loader.gif) no-repeat center;
+}

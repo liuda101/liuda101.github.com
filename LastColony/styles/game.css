@@ -1,0 +1,110 @@
+.game-player{
+	width:640px; height:480px; position:absolute;
+	display:none;
+}
+
+#gameContainer{
+	width:640px; height:480px;
+	background:url(../images/splashscreen.png);
+	border:1px solid black;
+}
+#gameStartScreen{
+	width:590px; height:160px;
+	padding-top:320px; padding-left:50px;
+	text-align:left;
+}
+
+#gameStartScreen span{
+	margin:20px;
+	font-family:'Courier New', Courier, monospace; font-size:48px;
+	cursor:pointer;
+	color:white; text-shadow:-2px 0 purple, 0 2px purple, 2px 0 purple, 0 -2px purple;
+}
+
+#gameStartScreen span:hover{
+	color:yellow;
+}
+#loadingScreen{
+	z-index:10;
+	background:rgba(100,100,100,0.7);
+}
+
+#loadingMessage{
+	margin-top:400px; height:48px;
+	text-align:center;
+	color:white; font:12px;
+	background:url(../images/loader.gif) no-repeat center;
+}
+#missionScreen{
+	background:url(../images/missionscreen.png) no-repeat;
+}
+
+#enterMission{
+	position: absolute; top:79px; left:6px;
+	width:246px; height:68px;
+	border-width:0px;
+	background:url(../images/buttons.png) no-repeat 0px 0px;
+}
+
+#enterMission:disabled, #enterMission:active{
+	background-position: -251px 0px;
+	outline:none;
+}
+
+#exitMission{
+	position: absolute; top:79px; left:380px;
+	width:98px; height:68px;
+	border-width: 0px;
+	background:url(../images/buttons.png) no-repeat 0px -76px;
+}
+
+#exitMission:disabled, #exitMission:active{
+	background-position:-103px -76px;
+	outline:none;
+}
+
+#missionBriefing{
+	position: absolute; top:170px; left:30px;
+	width:400px; height:290px;
+	color:rgb(130,150,163);
+	font-size:13px; font-family: 'Courier New', Courier, monospace;
+}
+#gameInterfaceScreen{
+	background:url(../images/maininterface.png) no-repeat;
+}
+
+#gameMessages{
+	position: absolute; padding-left:10px; top:5px; left:5px;
+	width:450px; height:60px; overflow: hidden;
+	color:rgb(130, 150, 162);
+	font-size:13px; font-family: 'Courier New', Courier, monospace;
+}
+
+#gameMessages span{
+	color:white;
+}
+
+#callerPicture{
+	position:absolute; left:498px; top:154px;
+	width:126px; height:88px; overflow:hidden;
+}
+
+#cash{
+	position:absolute; top:256px; left:498px;
+	width:120px; height:22px; overflow:hidden;
+	color:rgb(130,150,162);
+	font-size:13px; font-family: 'Courier New', Courier, monospace;
+	text-align:right;
+}
+
+#gameInterfaceScreen canvas{
+	position: absolute; top:79px; left:0px;
+}
+
+#foregroundCanvas{
+	z-index:1;
+}
+
+#backgroundCanvas{
+	z-index:0;
+}

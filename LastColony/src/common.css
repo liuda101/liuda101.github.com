@@ -1,0 +1,10 @@
+.game-player{
+	width:640px; height:480px; position:absolute;
+	display:none;
+}
+
+#gameContainer{
+	width:640px; height:480px;
+	background:url(../images/splashscreen.png);
+	border:1px solid black;
+}

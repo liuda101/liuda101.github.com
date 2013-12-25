@@ -1,0 +1,34 @@
+#missionScreen{
+	background:url(../images/missionscreen.png) no-repeat;
+}
+
+#enterMission{
+	position: absolute; top:79px; left:6px;
+	width:246px; height:68px;
+	border-width:0px;
+	background:url(../images/buttons.png) no-repeat 0px 0px;
+}
+
+#enterMission:disabled, #enterMission:active{
+	background-position: -251px 0px;
+	outline:none;
+}
+
+#exitMission{
+	position: absolute; top:79px; left:380px;
+	width:98px; height:68px;
+	border-width: 0px;
+	background:url(../images/buttons.png) no-repeat 0px -76px;
+}
+
+#exitMission:disabled, #exitMission:active{
+	background-position:-103px -76px;
+	outline:none;
+}
+
+#missionBriefing{
+	position: absolute; top:170px; left:30px;
+	width:400px; height:290px;
+	color:rgb(130,150,163);
+	font-size:13px; font-family: 'Courier New', Courier, monospace;
+}

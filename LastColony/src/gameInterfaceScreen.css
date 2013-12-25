@@ -1,0 +1,39 @@
+#gameInterfaceScreen{
+	background:url(../images/maininterface.png) no-repeat;
+}
+
+#gameMessages{
+	position: absolute; padding-left:10px; top:5px; left:5px;
+	width:450px; height:60px; overflow: hidden;
+	color:rgb(130, 150, 162);
+	font-size:13px; font-family: 'Courier New', Courier, monospace;
+}
+
+#gameMessages span{
+	color:white;
+}
+
+#callerPicture{
+	position:absolute; left:498px; top:154px;
+	width:126px; height:88px; overflow:hidden;
+}
+
+#cash{
+	position:absolute; top:256px; left:498px;
+	width:120px; height:22px; overflow:hidden;
+	color:rgb(130,150,162);
+	font-size:13px; font-family: 'Courier New', Courier, monospace;
+	text-align:right;
+}
+
+#gameInterfaceScreen canvas{
+	position: absolute; top:79px; left:0px;
+}
+
+#foregroundCanvas{
+	z-index:1;
+}
+
+#backgroundCanvas{
+	z-index:0;
+}

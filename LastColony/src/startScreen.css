@@ -1,0 +1,16 @@
+#gameStartScreen{
+	width:590px; height:160px;
+	padding-top:320px; padding-left:50px;
+	text-align:left;
+}
+
+#gameStartScreen span{
+	margin:20px;
+	font-family:'Courier New', Courier, monospace; font-size:48px;
+	cursor:pointer;
+	color:white; text-shadow:-2px 0 purple, 0 2px purple, 2px 0 purple, 0 -2px purple;
+}
+
+#gameStartScreen span:hover{
+	color:yellow;
+}
