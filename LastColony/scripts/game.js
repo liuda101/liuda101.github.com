@@ -59,7 +59,27 @@ var maps = {
 
 			mapImage: 'images/maps/level-one-debug-grid.png',
 			startX: 4,
-			startY: 4
+			startY: 4,
+
+			requirements: {
+				buildings: ['base', 'starport', 'harvester'],
+				vehicles: [],
+				aircraft: [],
+				terrain: []
+			},
+
+			items: [
+				{type: 'buildings', name: 'base', x: 11, y: 14, team: 'blue', action: 'construct'},
+				{type: 'buildings', name: 'base', x: 12, y: 16, team: 'green'},
+				{type: 'buildings', name: 'base', x: 15, y: 15, team: 'green', life: 50},
+
+				{type: 'buildings', name: 'starport', x: 18, y: 14, team: 'blue'},
+				{type: 'buildings', name: 'starport', x: 18, y: 10, team: 'blue', action: 'teleport'},
+				{type: 'buildings', name: 'starport', x: 18, y: 6, team: 'green', action: 'open'},
+
+				{type: 'buildings', name: 'harvester', x: 20, y: 10, team: 'blue'},
+				{type: 'buildings', name: 'harvester', x: 22, y: 12, team: 'green', action: 'deploy'}
+			]
 		}
 	]
 };
@@ -88,6 +108,25 @@ var singleplayer = {
 
 		game.offsetX = level.startX * game.gridSize;
 		game.offsetY = level.startY * game.gridSize;
+
+		// load level requirements
+		game.resetArrays();
+		for(var type in level.requirements){
+			var requirementArray = level.requirements[type]
+			for(var i = 0; i < requirementArray.length; i ++){
+				var name = requirementArray[i];
+				if(window[type]){
+					window[type].load(name);
+				} else {
+					console.log('Could not load type: ' + type);
+				}
+			}
+		}
+
+		for(var i = level.items.length - 1; i >= 0; i --){
+			var itemDetails = level.items[i];
+			game.add(itemDetails);
+		}
 
 		if(loader.loaded){
 			$('#enterMission').removeAttr('disabled');
@@ -242,6 +281,54 @@ var game = {
 
 		game.drawingLoop();
 	},
+	resetArrays: function(){
+		game.counter = 1;
+		
+		game.items = [];
+		
+		game.buildings = [];
+		game.vehicles = [];
+		game.aircraft = [];
+		game.terrain = [];
+
+		game.triggeredEvents = [];
+		game.selectedItems = [];
+		game.sortedItems = [];
+	},
+	add: function(itemDetails){
+		if(!itemDetails.uid){
+			itemDetails.uid = game.counter ++;
+		}
+
+		var item = window[itemDetails.type].add(itemDetails);
+		game.items.push(item);
+		game[item.type].push(item);
+
+		return item;
+	},
+	remove: function(item){
+		item.selectedItems = false;
+		for(var i = game.selectedItems.length - 1; i >= 0; i --){
+			if(game.selectedItems[i].uid == item.uid){
+				game.selectedItems.splice(i, 1);
+				break;
+			}
+		}
+
+		for(var i = game.items.length - 1; i >= 0; i --){
+			if(game.items[i].uid == item.uid){
+				game.items.splice(i, 1);
+				break;
+			}
+		}
+
+		for(var i = game[item.type].length - 1; i >= 0; i --){
+			if(game[item.type][i].uid == item.uid){
+				game[item.type].splice(i, 1);
+				break;
+			}
+		}
+	},
 	handlePanning: function() {
 		if(!mouse.insideCanvas){
 			return;
@@ -274,7 +361,14 @@ var game = {
 		}
 	},
 	animationLoop: function(){
+		for(var i = game.items.length - 1; i >= 0; i --){
+			game.items[i].animate();
+		}
 
+		game.sortedItems = $.extend([], game.items);
+		game.sortedItems.sort(function(a,b){
+			return b.y - a.y + ((b.y == a.y) ? (a.x - b.x) : 0);
+		});
 	},
 	drawingLoop: function(){
 		game.handlePanning();
@@ -286,6 +380,11 @@ var game = {
 		}
 
 		game.foregroundContext.clearRect(0,0,game.canvasWidth, game.canvasHeight);
+
+		for(var i = game.sortedItems.length - 1; i >= 0; i --){
+			game.sortedItems[i].draw();
+		}
+
 		mouse.draw();
 
 		if(game.running){

@@ -20,6 +20,12 @@ module.exports = function(grunt){
 				],
 				dest: 'scripts/entities.js'
 			},
+			common: {
+				src: [
+					'src/common.js'
+				],
+				dest: 'scripts/common.js'
+			},
 			css: {
 				src: [
 					'src/common.css',
