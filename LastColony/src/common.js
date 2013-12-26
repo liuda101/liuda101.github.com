@@ -19,8 +19,8 @@ function loadItem(name){
 					count: constructImageCount,
 					offset: item.spriteCount
 				};
+				item.spriteCount += constructImageCount;
 			}
-			item.spriteCount += constructImageCount;
 		} else {
 			var constructImageName = item.spriteImages[i].name;
 			item.spriteArray[constructImageName] = {
@@ -40,5 +40,6 @@ function addItem(details){
 	$.extend(item, this.list[name]);
 	item.life = item.hitPoints;
 	$.extend(item, details);
+	
 	return item;
 }

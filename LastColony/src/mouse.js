@@ -18,7 +18,47 @@ var mouse = {
 	insideCanvas: false,
 
 	click: function(ev, rightClick){
+		var clickedItem = this.itemUnderMouse();
+		var shiftPressed = ev.shiftKey;
 
+		if(!rightClick){
+			if(clickedItem){
+				if(!shiftPressed){
+					game.clearSelection();
+				}
+				game.selectItem(clickedItem, shiftPressed);
+			}
+		} else {
+
+		}
+	},
+	itemUnderMouse: function(){
+		for(var i = game.items.length - 1; i >= 0; i --){
+			var item = game.items[i];
+			if(item.type == 'buildings' || item.type == 'terrain'){
+				if(item.lifeCode != 'dead'
+					&& item.x <= (mouse.gameX) / game.gridSize
+					&& item.x >= (mouse.gameX - item.baseWidth) / game.gridSize
+					&& item.y <= (mouse.gameY) / game.gridSize
+					&& item.y >= (mouse.gameY - item.baseHeight) /game.gridSize){
+					return item;
+				}
+			} else if(item.type == 'aircraft'){
+				if(item.lifeCode != 'dead'
+					&& Math.pow(item.x - mouse.gameX / game.gridSize, 2) + 
+					Math.pow(item.y - mouse.gameY/game.gridSize, 2) <
+					Math.pow(item.radius / game.gridSize, 2)){
+					return item;
+				}
+			} else {
+				if(item.lifeCode != 'dead'
+					&& Math.pow(item.x - mouse.gameX / game.gridSize, 2) + 
+					Math.pow(item.y - mouse.gameY/game.gridSize, 2) <
+					Math.pow(item.radius / game.gridSize, 2)){
+					return item;
+				}
+			}
+		}
 	},
 
 	draw: function(){
@@ -83,6 +123,38 @@ var mouse = {
 		$mouseCanvas.mouseup(function(ev){
 			var shiftPressed = ev.shiftKey;
 			if(ev.which == 1){
+
+				if(mouse.dragSelect){
+					if(!shiftPressed){
+						game.clearSelection();
+					}
+
+					var x1 = Math.min(mouse.gameX, mouse.dragX) / game.gridSize;
+					var y1 = Math.min(mouse.gameY, mouse.dragY) / game.gridSize;
+					var x2 = Math.max(mouse.gameX, mouse.dragX) / game.gridSize;
+					var y2 = Math.max(mouse.gameY, mouse.dragY) / game.gridSize;
+
+					for(var i = game.items.length - 1; i >= 0; i --){
+						var item = game.items[i];
+						if(item.type != 'buildings'
+							&& item.selectable && item.team == game.team 
+							&& x1 <= item.x && x2 >= item.x){
+							if(item.type == 'vehicles'
+								&& y1 <= item.y && y2 >= item.y){
+								game.selectItem(item);
+								continue;
+							}
+							if(item.type == 'aircraft'
+								&& y1 <= item.y
+								&& y2 >= item.y){
+								game.selectItem(item);
+								continue;
+							}
+						}
+					}
+				}
+
+
 				mouse.buttonPressed = false;
 				mouse.dragSelect = false;
 			}

@@ -78,6 +78,39 @@ var buildings = {
 				{name: 'healthy', count: 3},
 				{name: 'damaged', count: 1}
 			]
+		},
+		'ground-turret': {
+			name: 'ground-turret',
+			canAttack: true,
+			canAttackLand: true,
+			canAttackAir: false,
+			weaponType: 'cannon-ball',
+			action: 'guard',
+			direction: 0,
+			directions: 8,
+			orders: {type: 'guard'},
+
+			pixelWidth: 38,
+			pixelHeight: 32,
+			baseWidth: 20,
+			baseHeight: 18,
+			pixelOffsetX: 9,
+			pixelOffsetY: 12,
+
+			cost: 1500,
+			buildableGrid: [
+				[1]
+			],
+			passableGrid: [
+				[1]
+			],
+			sight: 5,
+			hitPoints: 200,
+			spriteImages: [
+				{name: 'teleport', count: 9},
+				{name: 'healthy', count: 1, directions: 8},
+				{name: 'damaged', count: 1}
+			]
 		}
 	},
 	defaults: {
@@ -157,17 +190,52 @@ var buildings = {
 						this.action = 'stand';
 					}
 				break;
+				case 'guard':
+					if(this.lifeCode == 'damaged'){
+						this.imageList = this.spriteArray[this.lifeCode];
+					} else {
+						this.imageList = this.spriteArray[this.lifeCode + '-' + this.direction];
+					}
+					this.imageOffset = this.imageList.offset;
+				break;
 			}
 		},
 		draw: function(){
 			var x = (this.x*game.gridSize) - game.offsetX - this.pixelOffsetX;
 			var y = (this.y*game.gridSize) - game.offsetY - this.pixelOffsetY;
 
+			this.drawingX = x;
+			this.drawingY = y;
+
+			if(this.selected){
+				this.drawSelection();
+				this.drawLifeBar();
+			}
+
 			var colorIndex = (this.team == 'blue') ? 0 : 1;
 			var colorOffset = colorIndex * this.pixelHeight;
 			game.foregroundContext.drawImage(this.spriteSheet,
 				this.imageOffset*this.pixelWidth, colorOffset, this.pixelWidth, this.pixelHeight,
 				x, y, this.pixelWidth, this.pixelHeight);
+		},
+		drawLifeBar: function(){
+			var x = this.drawingX + this.pixelOffsetX;
+			var y = this.drawingY - 2 * game.lifeBarHeight;
+			game.foregroundContext.fillStyle = (this.lifeCode == 'healthy') ?
+				game.healthBarHealthyFillColor: game.healthBarDamagedFillColor;
+			game.foregroundContext.fillRect(x, y, this.baseWidth * this.life / this.hitPoints, game.lifeBarHeight);
+			game.foregroundContext.strokeStyle = game.healthBarBorderColor;
+			game.foregroundContext.lineWidth = 1;
+			game.foregroundContext.strokeRect(x, y, this.baseWidth, game.lifeBarHeight);
+		},
+		drawSelection: function(){
+			var x = this.drawingX + this.pixelOffsetX;
+			var y = this.drawingY + this.pixelOffsetY;
+			game.foregroundContext.strokeStyle = game.selectionBorderColor;
+			game.foregroundContext.lineWidth = 1;
+			game.foregroundContext.fillStyle = game.selectionFillColor;
+			game.foregroundContext.fillRect(x-1, y-1,this.baseWidth+2, this.baseHeight+2);
+			game.foregroundContext.strokeRect(x-1, y-1,this.baseWidth+2, this.baseHeight+2);
 		}
 	},
 	load: loadItem,

@@ -62,10 +62,10 @@ var maps = {
 			startY: 4,
 
 			requirements: {
-				buildings: ['base', 'starport', 'harvester'],
-				vehicles: [],
-				aircraft: [],
-				terrain: []
+				buildings: ['base', 'starport', 'harvester', 'ground-turret'],
+				vehicles: ['transport', 'harvester', 'scout-tank', 'heavy-tank'],
+				aircraft: ['chopper', 'wraith'],
+				terrain: ['oilfield', 'bigrocks', 'smallrocks']
 			},
 
 			items: [
@@ -78,7 +78,30 @@ var maps = {
 				{type: 'buildings', name: 'starport', x: 18, y: 6, team: 'green', action: 'open'},
 
 				{type: 'buildings', name: 'harvester', x: 20, y: 10, team: 'blue'},
-				{type: 'buildings', name: 'harvester', x: 22, y: 12, team: 'green', action: 'deploy'}
+				{type: 'buildings', name: 'harvester', x: 22, y: 12, team: 'green', action: 'deploy'},
+
+				{type: 'buildings', name: 'ground-turret', x: 14, y: 9, team: 'blue', direction: 3},
+				{type: 'buildings', name: 'ground-turret', x: 14, y: 12, team: 'blue', action: 'teleport'},
+				{type: 'buildings', name: 'ground-turret', x: 16, y: 10, team: 'green', direction: 1},
+
+
+				{type: 'vehicles', name: 'transport', x: 26, y: 10, team: 'blue', direction: 2},
+				{type: 'vehicles', name: 'harvester', x: 26, y: 12, team: 'blue', direction: 3},
+				{type: 'vehicles', name: 'scout-tank', x: 26, y: 14, team: 'blue', direction: 4},
+				{type: 'vehicles', name: 'heavy-tank', x: 26, y: 16, team: 'blue', direction: 5},
+
+				{type: 'vehicles', name: 'transport', x: 30, y: 10, team: 'green', direction: 2},
+				{type: 'vehicles', name: 'harvester', x: 30, y: 12, team: 'green', direction: 3},
+				{type: 'vehicles', name: 'scout-tank', x: 30, y: 14, team: 'green', direction: 4},
+				{type: 'vehicles', name: 'heavy-tank', x: 30, y: 16, team: 'green', direction: 5},
+
+				{type: 'aircraft', name: 'chopper', x: 20, y: 22, team: 'blue', direction: 2},
+				{type: 'aircraft', name: 'wraith', x: 23, y: 22, team: 'green', direction: 3},
+
+				{type: 'terrain', name: 'oilfield', x: 5, y: 7},
+				{type: 'terrain', name: 'oilfield', x: 8, y: 7, action: 'hint'},
+				{type: 'terrain', name: 'bigrocks', x: 5, y: 3},
+				{type: 'terrain', name: 'smallrocks', x: 8, y: 3}
 			]
 		}
 	]
@@ -165,7 +188,47 @@ var mouse = {
 	insideCanvas: false,
 
 	click: function(ev, rightClick){
+		var clickedItem = this.itemUnderMouse();
+		var shiftPressed = ev.shiftKey;
 
+		if(!rightClick){
+			if(clickedItem){
+				if(!shiftPressed){
+					game.clearSelection();
+				}
+				game.selectItem(clickedItem, shiftPressed);
+			}
+		} else {
+
+		}
+	},
+	itemUnderMouse: function(){
+		for(var i = game.items.length - 1; i >= 0; i --){
+			var item = game.items[i];
+			if(item.type == 'buildings' || item.type == 'terrain'){
+				if(item.lifeCode != 'dead'
+					&& item.x <= (mouse.gameX) / game.gridSize
+					&& item.x >= (mouse.gameX - item.baseWidth) / game.gridSize
+					&& item.y <= (mouse.gameY) / game.gridSize
+					&& item.y >= (mouse.gameY - item.baseHeight) /game.gridSize){
+					return item;
+				}
+			} else if(item.type == 'aircraft'){
+				if(item.lifeCode != 'dead'
+					&& Math.pow(item.x - mouse.gameX / game.gridSize, 2) + 
+					Math.pow(item.y - mouse.gameY/game.gridSize, 2) <
+					Math.pow(item.radius / game.gridSize, 2)){
+					return item;
+				}
+			} else {
+				if(item.lifeCode != 'dead'
+					&& Math.pow(item.x - mouse.gameX / game.gridSize, 2) + 
+					Math.pow(item.y - mouse.gameY/game.gridSize, 2) <
+					Math.pow(item.radius / game.gridSize, 2)){
+					return item;
+				}
+			}
+		}
 	},
 
 	draw: function(){
@@ -230,6 +293,38 @@ var mouse = {
 		$mouseCanvas.mouseup(function(ev){
 			var shiftPressed = ev.shiftKey;
 			if(ev.which == 1){
+
+				if(mouse.dragSelect){
+					if(!shiftPressed){
+						game.clearSelection();
+					}
+
+					var x1 = Math.min(mouse.gameX, mouse.dragX) / game.gridSize;
+					var y1 = Math.min(mouse.gameY, mouse.dragY) / game.gridSize;
+					var x2 = Math.max(mouse.gameX, mouse.dragX) / game.gridSize;
+					var y2 = Math.max(mouse.gameY, mouse.dragY) / game.gridSize;
+
+					for(var i = game.items.length - 1; i >= 0; i --){
+						var item = game.items[i];
+						if(item.type != 'buildings'
+							&& item.selectable && item.team == game.team 
+							&& x1 <= item.x && x2 >= item.x){
+							if(item.type == 'vehicles'
+								&& y1 <= item.y && y2 >= item.y){
+								game.selectItem(item);
+								continue;
+							}
+							if(item.type == 'aircraft'
+								&& y1 <= item.y
+								&& y2 >= item.y){
+								game.selectItem(item);
+								continue;
+							}
+						}
+					}
+				}
+
+
 				mouse.buttonPressed = false;
 				mouse.dragSelect = false;
 			}
@@ -255,6 +350,36 @@ var game = {
 	offsetY: 0,
 	panningThreshold: 60,
 	panningSpeed: 10,
+
+	selectionBorderColor: 'rgba(255,255,0,0.5)',
+	selectionFillColor: 'rgba(255,215,0,0.2)',
+	healthBarBorderColor: 'rgba(0,0,0,0.8)',
+	healthBarHealthyFillColor: 'rgba(0,255,0,0.5)',
+	healthBarDamagedFillColor: 'rgba(255,0,0,0.5)',
+	lifeBarHeight: 5,
+
+	clearSelection: function(){
+		while(game.selectedItems.length > 0){
+			game.selectedItems.pop().selected = false;
+		}
+	},
+
+	selectItem: function(item, shiftPressed){
+		if(shiftPressed && item.selected){
+			item.selected = false;
+			for(var i = game.selectedItems.length - 1; i >= 0; i --){
+				game.selectedItems.splice(i, 1);
+				break;
+			}
+			return;
+		}
+
+		if(item.selectable && !item.selected){
+			item.selected = true;
+			game.selectedItems.push(item);
+		}
+	},
+
 	init: function(){
 		loader.init();
 		mouse.init();

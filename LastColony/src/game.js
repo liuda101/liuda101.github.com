@@ -6,6 +6,36 @@ var game = {
 	offsetY: 0,
 	panningThreshold: 60,
 	panningSpeed: 10,
+
+	selectionBorderColor: 'rgba(255,255,0,0.5)',
+	selectionFillColor: 'rgba(255,215,0,0.2)',
+	healthBarBorderColor: 'rgba(0,0,0,0.8)',
+	healthBarHealthyFillColor: 'rgba(0,255,0,0.5)',
+	healthBarDamagedFillColor: 'rgba(255,0,0,0.5)',
+	lifeBarHeight: 5,
+
+	clearSelection: function(){
+		while(game.selectedItems.length > 0){
+			game.selectedItems.pop().selected = false;
+		}
+	},
+
+	selectItem: function(item, shiftPressed){
+		if(shiftPressed && item.selected){
+			item.selected = false;
+			for(var i = game.selectedItems.length - 1; i >= 0; i --){
+				game.selectedItems.splice(i, 1);
+				break;
+			}
+			return;
+		}
+
+		if(item.selectable && !item.selected){
+			item.selected = true;
+			game.selectedItems.push(item);
+		}
+	},
+
 	init: function(){
 		loader.init();
 		mouse.init();

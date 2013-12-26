@@ -13,18 +13,13 @@ module.exports = function(grunt){
 			},
 			entity: {
 				src: [
+					'src/common.js',
 					'src/buildings.js',
 					'src/vehicles.js',
-					'src/aircarft.js',
+					'src/aircraft.js',
 					'src/terrain.js'
 				],
 				dest: 'scripts/entities.js'
-			},
-			common: {
-				src: [
-					'src/common.js'
-				],
-				dest: 'scripts/common.js'
 			},
 			css: {
 				src: [
