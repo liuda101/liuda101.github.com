@@ -38,6 +38,17 @@
 			});
 		},
 		goToMainScreen : function(){
+			var timer = setTimeout(function () {
+				var time = new Date();
+				var h = time.getHours() - 1,
+					m = time.getMinutes();
+				var hd = h >= 12 ? 'PM' : 'AM';
+				h = h > 12 ? h - 11 : h;
+				h = h.toString().length === 1 ? '0' + h : '' + h;
+				m = m.toString().length === 1 ? '0' + m : '' + m;
+				$('#time-status').text(h + ' : ' + m + ' ' + hd);
+				timer = setTimeout(arguments.callee, 60000);
+			}, 0);
 			$('html').removeClass('lock');
 		}
 	};
