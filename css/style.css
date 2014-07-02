@@ -5,7 +5,7 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 #screen { width: 320px; height: 480px; position: absolute; left: 24px; top: 118px; overflow: hidden; }
 
 #home { position: absolute; bottom: 29px; width: 100%; text-align: center; }
-#home button { border: none; height: 70px; width: 70px; background: url(../imgs/home.png) no-repeat 100px 100px; background-size: 70px; }
+#home button { border: none; height: 70px; width: 70px; background: url(../imgs/home.png) no-repeat 100px 100px; background-size: 70px; outline: none;}
 #home button:active { background-position: 0px 0px; }
 
 .lock #time-status { display: none; }
