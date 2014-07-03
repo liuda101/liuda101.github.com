@@ -13,6 +13,9 @@
 			var self = this;
 
 			this.appMouseDownTimeout = null;
+			self.showMainScreenTimeTimeout = null;
+			self.backToLockedScreen = null;
+			self.lockScreenTime = 2000;
 
 			$('.app').on('mousedown',function(e){
 				window.clearTimeout(self.appMouseDownTimeout);
@@ -38,8 +41,8 @@
 			});
 		},
 		goToMainScreen : function(){
-			var mm = 60;
-			var timer = setTimeout(function () {
+			var mm = 60, self = this;
+			self.showMainScreenTimeTimeout = setTimeout(function () {
 				var date = new Date();
 				var h = date.getHours(),
 					m = date.getMinutes();
@@ -52,9 +55,53 @@
 					$('#time-status').text(h + ' : ' + m + ' ' + hd);
 					mm = m;
 				}
-				timer = setTimeout(arguments.callee, 1000);
+				self.showMainScreenTimeTimeout = setTimeout(arguments.callee, 1000);
 			}, 0);
 			$('html').removeClass('lock');
+			if (typeof backToLockedScreen === 'number') {
+				clearTimeout(self.backToLockedScreen);
+			};
+			self.setLockScreenTimer(self.lockScreenTime);
+			$('#screen').on('click', function () {
+				if (typeof backToLockedScreen === 'number') {
+					clearTimeout(self.backToLockedScreen);
+					self.setLockScreenTimer(self.lockScreenTime);
+				};
+			});
+		},
+		goToLockedScreen: function () {
+			var self = this;
+			clearTimeout(this.showMainScreenTimeTimeout);
+			$('html').addClass('lock');
+			$('#lock-screen-time').css({
+				left: 0,
+				top: -136,
+				opacity: 0
+			});
+			$('#lock-screen-slide').css({
+				left: 0,
+				bottom: -114,
+				opacity: 0
+			});
+			_.delay(function(){
+				self.lockedScreen.screenDOM.show();
+				$('#lock-screen-time').animate({
+					left: 0,
+					top: 0,
+					opacity: 1
+				},200);
+				$('#lock-screen-slide').animate({
+					left: 0,
+					bottom: 0,
+					opacity: 1
+				},200);
+			},700);
+		},
+		setLockScreenTimer: function (time) {
+			var self = this;
+			self.backToLockedScreen = setTimeout(function () {
+				self.goToLockedScreen();
+			}, time)
 		}
 	};
 
