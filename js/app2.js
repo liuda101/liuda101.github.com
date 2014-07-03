@@ -89,12 +89,12 @@
 					left: 0,
 					top: 0,
 					opacity: 1
-				},200);
+				},120);
 				$('#lock-screen-slide').animate({
 					left: 0,
 					bottom: 0,
 					opacity: 1
-				},200);
+				},120);
 			},700);
 		},
 		setLockScreenTimer: function (time) {
