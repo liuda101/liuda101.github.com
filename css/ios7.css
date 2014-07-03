@@ -1,0 +1,50 @@
+.ios7{
+  width: 379px;
+  height: 798px;
+  margin: 20px auto;
+  position: relative;
+}
+.iphone{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background: url(../imgs/iphone.png) no-repeat;
+  background-size: 379px 798px;
+}
+
+.viewport{
+  background: white;
+  width: 329px;
+  height: 577px;
+  position: relative;
+  overflow: hidden;
+  top: 112px;
+  left: 27px;
+}
+
+.device-open{
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+.device-open img{
+  margin-top: 270px;
+
+}
+
+.background{
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 349px;
+  height: 597px;
+  background: url(../imgs/background_ios7.jpg) no-repeat;
+  background-size: 349px 597px;
+}
