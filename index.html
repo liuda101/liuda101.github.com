@@ -6,15 +6,31 @@
   <link rel="stylesheet" type="text/css" href="css/ios7.css" />
 </head>
 <body>
-  <div class="ios7">
+  <div class="ios7" id="application" style="display:none;">
     <div class="viewport">
     	
-			<div class="device-open">
-				<img src="imgs/loading.gif" alt="" width="30">
+      <div class="status-view">
+        <div class="sv-service">
+          <span class="sv-service-i"></span>
+          <span class="sv-service-i"></span>
+          <span class="sv-service-i"></span>
+          <span class="sv-service-i"></span>
+          <span class="sv-service-i sv-service-i2"></span>
+          <span class="sv-service-n">CSS</span>
+        </div>
+        <div class="sv-wifi">
+          
+        </div>
+      </div>
+
+
+			<div class="device-open" id="deviceOpen">
+				<img id="loadingGif" src="imgs/loading.gif" alt="" width="30">
 			</div>
 
 
-			<!-- <div class="background"></div> -->
+			<div class="background">
+      </div>
 			
 
     </div>
@@ -22,5 +38,13 @@
     <div class="iphone"></div>
   </div>
 
+<script type="text/template" id="lockScreenTemplate">
+  
+</script>
+
+<script src="js/lib/underscore.js"></script>
+<script src="js/lib/jquery.js"></script>
+<script src="js/ios7/assetsLoader.js"></script>
+<script src="js/ios7/application.js"></script>
 </body>
 </html>
