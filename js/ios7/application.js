@@ -21,6 +21,10 @@
       var self = this;
       self.applicationDOM = $('#application');
       self.loadingGif = $('#loadingGif');
+
+      // $('#deviceOpen').fadeOut(100, function(){
+      //   $(this).remove();
+      // });
     },
 
     loadFrameImage: function(){
