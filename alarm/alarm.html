@@ -5,22 +5,20 @@
   <title>Alarm</title>
   <style>
   body{
-    background-color: black;
+    background-color: rgb(18, 133, 143);
   }
   .alarm{
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
     position: relative;
-
     margin: 100px auto;
-    border: 1px solid #cdcdcd;
   }
   .alarm-dial{
     position: absolute;
     width: 100px;
     height: 100px;
     bottom: 0px;
-    left: 40px;
+    left: 10px;
     border-radius: 60px;
     border: 10px solid #fff;
   }
@@ -29,19 +27,28 @@
   }
   .alarm-dial1{
     height: 13px;
-    width: 30px;
-    background-color: #fff;
+    width: 35px;
+    background-color: transparent;
     top: 43px;
-    left: 22px;
-    border-radius: 6px 0 0 6px;
+    left: 16px;
+    font-size: 20px;
+    line-height: 14px;
+    text-indent: -12px;
+    overflow: hidden;
+    color: #fff;
   }
   .alarm-dial2{
-    height: 45px;
-    width: 13px;
-    background-color: #fff;
-    top: 11px;
-    left: 42px;
-    border-radius: 6px 6px 3px 6px;
+    height: 13px;
+    width: 50px;
+    top: 22px;
+    left: 24px;
+    background-color: transparent;
+    font-size: 20px;
+    line-height: 14px;
+    text-indent: -12px;
+    overflow: hidden;
+    color: #fff;
+    -webkit-transform: rotate(90deg);
   }
   .alarm-dial3{
     height: 45px;
@@ -50,16 +57,77 @@
     width: 100px;
     border-radius: 0 0 30px 30px;
   }
+  .alarm-dial4{
+    height: 13px;
+    top: 43px;
+    background-color: #fff;
+    width: 22px;
+    left: -2px;
+  }
+  .alarm-dial5{
+    height: 43px;
+    top: 0px;
+    background-color: #fff;
+    width: 43px;
+    border-radius:60px 0 0 0;
+  }
+  .alarm-dial6{
+    height: 6px;
+    top: 0px;
+    background-color: #fff;
+    width: 13px;
+    left: 43px;
+  }
+  .alarm-dial7{
+    height: 56px;
+    top: 0px;
+    background-color: #fff;
+    width: 45px;
+    border-radius:0 60px 0 0;
+    left: 56px;
+  }
+  .alarm-ear{
+    position: absolute;
+    width: 32px;
+    height: 16px;
+    overflow: hidden;
+    
+  }
+  .alarm-ear-i{
+    position: absolute;
+    height: 32px;
+    width: 32px;
+    border-radius: 16px;
+    background-color: #fff;
+  }
+  .alarm-ear1{
+    top:5px;
+    left:5px;
+    -webkit-transform: rotate(-37deg);
+  }
+  .alarm-ear2{
+    top:5px;
+    right:5px;
+    -webkit-transform: rotate(37deg);
+  }
   </style>
 </head>
 <body>
   <div class="alarm">
-    <div class="alarm-ear alarm-ear1"></div>
-    <div class="alarm-ear alarm-ear2"></div>
+    <div class="alarm-ear alarm-ear1">
+      <div class="alarm-ear-i"></div>
+    </div>
+    <div class="alarm-ear alarm-ear2">
+      <div class="alarm-ear-i"></div>
+    </div>
     <div class="alarm-dial">
-      <div class="alarm-dial1"></div>
-      <div class="alarm-dial2"></div>
-      <!-- <div class="alarm-dial3"></div> -->
+      <div class="alarm-dial1">【</div>
+      <div class="alarm-dial2">【</div>
+      <div class="alarm-dial3"></div>
+      <div class="alarm-dial4"></div>
+      <div class="alarm-dial5"></div>
+      <div class="alarm-dial6"></div>
+      <div class="alarm-dial7"></div>
     </div>
   </div>
 </body>
