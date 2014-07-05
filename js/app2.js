@@ -68,10 +68,16 @@
 					self.setLockScreenTimer(self.lockScreenTime);
 				};
 			});
+			$('#to_lock_screen').one('click', function () {
+				self.goToLockedScreen();
+			})
 		},
 		goToLockedScreen: function () {
 			var self = this;
 			clearTimeout(this.showMainScreenTimeTimeout);
+			if (typeof self.backToLockedScreen === 'number') {
+				clearTimeout(self.backToLockedScreen);
+			};
 			$('html').addClass('lock');
 			$('#lock-screen-time').css({
 				left: 0,
