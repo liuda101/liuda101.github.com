@@ -15,7 +15,7 @@
 			this.appMouseDownTimeout = null;
 			self.showMainScreenTimeTimeout = null;
 			self.backToLockedScreen = null;
-			self.lockScreenTime = 2000;
+			self.lockScreenTime = 5000;
 
 			$('.app').on('mousedown',function(e){
 				window.clearTimeout(self.appMouseDownTimeout);
@@ -62,8 +62,8 @@
 				clearTimeout(self.backToLockedScreen);
 			};
 			self.setLockScreenTimer(self.lockScreenTime);
-			$('#screen').on('click', function () {
-				if (typeof backToLockedScreen === 'number') {
+			$('#screen').on('mouseup', function () {
+				if (typeof self.backToLockedScreen === 'number') {
 					clearTimeout(self.backToLockedScreen);
 					self.setLockScreenTimer(self.lockScreenTime);
 				};
