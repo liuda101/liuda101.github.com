@@ -1,6 +1,10 @@
 html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Helvetica'; -webkit-user-select: none; cursor: default; }
 
 #iPhone { width: 368px; height: 716px; margin: 0 auto; position: relative; }
+#to_lock_screen{ width: 62px; height: 3px; position: absolute; top: 0; right: 52px; cursor: pointer; outline: none; background: url(../imgs/lock_button.png) no-repeat 0 0; background-size: 62px; overflow: hidden; }
+#to_lock_screen, #to_lock_screen:visited{ background-position: 0 0; }
+#to_lock_screen:hover{ background-position: 0 1px; }
+#to_lock_screen:active{ background-position: 0 2px; }
 
 #screen { width: 320px; height: 480px; position: absolute; left: 24px; top: 118px; overflow: hidden; }
 
@@ -126,7 +130,7 @@ html, body, div, header, button, span { padding: 0; margin: 0; font-family: 'Hel
 
 body { background: -webkit-radial-gradient(white, #cccccc, #999999); padding-top: 30px; }
 
-#iPhone { background: url(../imgs/frame.png) no-repeat; background-size: 368px; }
+#iPhone { background: url(../imgs/frame_v2.png) no-repeat; background-size: 368px; }
 
 #screen { background: url(../imgs/background.png) no-repeat; background-size: 320px; }
 
