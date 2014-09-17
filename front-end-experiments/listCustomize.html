@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Customize List</title>
+<meta charset="utf-8">
+<style>
+.c{
+  width: 500px;
+  margin: 0 auto;
+}
+ol{
+  margin-left: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+li{
+  counter-increment: step-counter;
+  margin-bottom: 10px;
+}
+li:before{
+  content:counter(step-counter);
+  margin-right: 5px;
+  font-size: 80%;
+  background-color: rgb(200, 200, 200);
+  color: white;
+  font-weight: bold;
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+</style>
+</head>
+<body>
+  <div class="c">
+    <ol>
+      <li>Some people.</li>
+      <li>Play NBA</li>
+      <li>LOL Championship</li>
+      <li>iPhone Plus</li>
+      <li>Front end</li>
+    </ol>
+  </div>
+</body>
+</html>
