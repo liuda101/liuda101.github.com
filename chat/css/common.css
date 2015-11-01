@@ -1,0 +1,66 @@
+/* reset */
+html,
+body,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img,
+ul,
+li,
+ol {
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-size: 16px;
+  line-height: 1.7;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+a:visited {
+  color: #000;
+}
+ul,
+ol {
+  list-style: none;
+}
+input,
+button,
+textarea {
+  outline: none;
+  -webkit-apperance: none;
+  border-radius: none;
+  background: #fff;
+}
+/* reset end */
+.div {
+  display: block;
+}
+.wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.nav-bar {
+  border-top: 2px solid #f8662a;
+  border-bottom: 1px solid #e6e6e6;
+  background: #fff;
+  position: fixed;
+  width: 100%;
+  max-width: 500px;
+  z-index: 50;
+}
+.nav-bar h1 {
+  font-size: 19px;
+  text-align: center;
+  line-height: 44px;
+}
+.content {
+  padding-top: 47px;
+}

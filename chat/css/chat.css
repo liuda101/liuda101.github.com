@@ -1,0 +1,155 @@
+html,
+body,
+.wrapper {
+  width: 100%;
+  height: 100%;
+  background: #e9e9e9;
+}
+.wrapper {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.chat-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 2px solid #f8662a;
+  border-bottom: 1px solid #e6e6e6;
+  background: #fff;
+}
+.chat-banner h1 {
+  font-size: 19px;
+  text-align: center;
+  line-height: 44px;
+}
+.chat-content {
+  position: absolute;
+  top: 47px;
+  bottom: 55px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+.chat-content > div {
+  min-height: 100%;
+  padding-bottom: 10px;
+}
+.chat-item {
+  position: relative;
+  min-height: 80px;
+  overflow: hidden;
+}
+.chat-item.left-item {
+  padding: 0 30px 0 80px;
+  text-align: left;
+}
+.chat-item.right-item {
+  padding: 0 80px 0 30px;
+  text-align: left;
+}
+.left-item .chat-item-user {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+.right-item .chat-item-user {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.left-item .chat-item-content {
+  float: left;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.right-item .chat-item-content {
+  float: right;
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.chat-item-user,
+.chat-item-user img {
+  width: 60px;
+  height: 60px;
+  background: #e6e6e6;
+}
+.chat-item-content {
+  background: #fff;
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 5px;
+  border-radius: 2px;
+  color: #969696;
+  position: relative;
+}
+.chat-item-content:after {
+  content: ' ';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  -webkit-transform: rotate(45deg);
+}
+.chat-item-content > div {
+  position: relative;
+  z-index: 2;
+}
+.left-item .chat-item-content:after {
+  top: 9px;
+  left: -3px;
+}
+.right-item .chat-item-content:after {
+  top: 9px;
+  right: -3px;
+}
+.chat-form {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  height: 55px;
+}
+.chat-camera {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  left: 10px;
+  bottom: 5px;
+  border-radius: 100%;
+  background: url(/imgs/cameraIcon.png) no-repeat center center #e9e9e9;
+  background-size: 20px 15px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.chat-input {
+  position: absolute;
+  left: 55px;
+  bottom: 8px;
+  height: 34px;
+  right: 55px;
+  border-radius: 3px;
+  background: #e9e9e9;
+}
+.chat-input input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  color: #969696;
+}
+.chat-submit {
+  color: #969696;
+  position: absolute;
+  right: 0px;
+  bottom: 5px;
+  line-height: 40px;
+  width: 55px;
+  text-align: center;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
